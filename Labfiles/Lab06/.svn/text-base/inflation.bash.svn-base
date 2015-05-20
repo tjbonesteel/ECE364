@@ -1,0 +1,18 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+if (( $numArg < 2 ))
+then
+    echo "Usage: inflation.bash <grade_file> <school1> <school2>"
+    exit 1
+fi
+
+if [[ ! -r $arg1 ]]
+then
+    echo "error: $arg1 is not a readable file."
+    exit 2
+fi

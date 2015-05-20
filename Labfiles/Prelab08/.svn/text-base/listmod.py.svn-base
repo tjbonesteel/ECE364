@@ -1,0 +1,16 @@
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+import sys
+import os
+
+def find_median(l1,l2):
+
+    mergedList = l1
+    mergedList.extend(l2)
+    mergedList.sort()
+    median = mergedList[(len(mergedList)-1)/2]
+    tuple1 = (median,mergedList)
+    return tuple1
+        

@@ -1,0 +1,103 @@
+#! /usr/bin/env python
+
+import sys
+import re
+# STEP 1:
+# Provide code for the Student class and then ensure the correct functionality
+class Student:
+	def __init__(self, name):
+		self.name = name
+                self.grades = {}
+		
+	def addGrades(self, courseID, grades):
+                if courseID in self.grades:
+                        self.grades[courseID].extend(grades)
+                else:
+                        self.grades[courseID] = grades
+
+	def generateTranscript(self):
+		rtString = "\n"
+                for key, value in self.grades.items():
+                        count = len(self.grades[key])
+                        total = sum(self.grades[key])
+                        avg = total/count
+                        if avg >= 90:
+                                grade = "A"
+                        elif avg >=80:
+                                grade = "B"
+                        elif avg >= 70:
+                                grade = "C"
+                        elif avg >= 60:
+                                grade = "D"
+                        else:
+                                grade = "F"
+                        rtString = rtString + "%s: %s\n" % (key,grade)
+                rtString = self.name + rtString
+                return rtString
+
+	def __str__(self):
+                rString = ""
+                for key, value in self.grades.items():
+                        rString = rString + "%s: " % (key)
+                        for i in value:
+                                rString = rString + "%s " % (i)
+                        rString = rString + "\n"
+                return rString
+		
+		
+s1 = Student("Derf Elwom")
+s1.addGrades("ECE364", [100, 90, 80, 70, 60])
+s1.addGrades("ECE201", [90, 70, 100])
+s1.addGrades("ECE364", [100, 40, 50, 100])
+print s1.generateTranscript()
+print str(s1)		
+
+# STEP 2:
+# Provide code for the Student class and then ensure the correct functionality
+class StudentTracker:
+	def __init__(self):
+                self.students = {}
+	
+	def loadData(self, fileName):
+                fileObj = open(fileName, "r")
+                for line in fileObj:
+                        line = line.strip()
+                        line = line.split(",")
+                        name = line[0]
+                        s = Student(name)
+                        s.addGrades(line[1],line[2:])
+                        
+                        self.students[name] = s
+                       
+	def getStudent(self, name):
+                
+                if name in self.students:
+                
+                        return self.students[name]
+                else:
+                        return None
+	
+	def generateAllTranscripts(self):
+                rtString = "\n"
+                for key in self.students:
+                        s = self.getStudent(key)
+                        rtString = rtString + s.generateTranscript()
+                return rtString
+
+tracker = StudentTracker()
+
+try:
+	tracker.loadData(sys.argv[1])
+except Exception as e:
+	print "Error: Could not load student data. " + str(e)
+	sys.exit(1)
+	
+s1 = tracker.getStudent("Missing Student")
+print s1
+s2 = tracker.getStudent("Derf Elwom")
+print s2
+
+print tracker.generateAllTranscripts()
+
+
+sys.exit(0)

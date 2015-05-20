@@ -1,0 +1,40 @@
+#! /usr/bin/evn python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+import sys
+
+if len(sys.argv) < 2 or len(sys.argv) > 3:
+    print "email_list.py <type> [email host] < emails.in"
+    sys.exit(1)
+
+s = sys.stdin.readline()
+emailList=[]
+nameList=[]
+while s:
+    s=s.strip()
+    items = s.split('|')
+    
+    
+    if items[0].upper() == sys.argv[1].upper():
+        nameList.append(items[2])
+        emailList.append(items[3])
+    
+    if len(sys.argv) == 3:
+        items = s.split('@')
+        if items[1] == sys.argv[2]:
+            items = s.split('|')
+            nameList.append(items[2])
+            emailList.append(items[3])
+    s=sys.stdin.readline()
+
+
+i=0
+while i < len(emailList):
+    sys.stdout.write("%s <%s>;" % (nameList[i], emailList[i]))
+    i=i+1
+print "\n"
+
+sys.exit(0)

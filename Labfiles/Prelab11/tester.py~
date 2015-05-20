@@ -1,0 +1,8 @@
+#! /usr/bin/env python2.6
+
+import bitWorker
+
+print "in Module"
+bitWorker.displayBinary(10)
+
+print "passed the function"

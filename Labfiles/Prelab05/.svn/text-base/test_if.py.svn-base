@@ -1,0 +1,16 @@
+#! /usr/bin/evn python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+import sys
+
+arg = sys.argv[1]
+arg1 = int(arg)
+
+if arg1 < 7:
+    print "Low value"
+elif arg1 > 7:
+    print "High value"
+else:
+    print "Neither"

@@ -1,0 +1,13 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+
+if [[  -e $file ]]
+then
+    echo ""$@" already exists. would you like to delete it?"
+    exit 2
+fi

@@ -1,0 +1,14 @@
+#! /usr/bin/env python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+import re
+
+fileIN = open("Part2.in", "r")
+
+for line in fileIN:
+    str = re.sub(r"@purdue.edu","@ecn.purdue.edu",line)
+    str = re.sub(r"\n","/100",str)
+    print str
+

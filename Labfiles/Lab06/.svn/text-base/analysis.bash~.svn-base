@@ -1,0 +1,31 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+arg1=$1
+arg2=$2
+numArg=$#
+
+if (( $numArg != 2 ))
+then
+    echo "Usage: ./analysis.bash <input_file> <charity_flag>"
+    exit 1
+fi
+
+if [[ ! -r $arg1 ]]
+then
+    echo "error: $arg1 is not a readable file."
+    exit 2
+fi
+IFS=","
+while read -a data
+do
+    echo first set ${data[2]}
+    echo second set ${data[3]}
+done < $arg1
+
+
+exit 0

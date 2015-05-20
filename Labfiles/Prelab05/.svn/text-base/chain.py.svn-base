@@ -1,0 +1,44 @@
+#! /usr/bin/evn python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+import sys
+i=2
+s=sys.stdin.readline()
+tupList=[]
+regionList=[]
+masterList=[]
+predator="d"
+validRegion = 0
+validPrey = 0
+while s:
+    
+    items = s.split()
+    row = [items[0]]
+    if items[0] == sys.argv[1]:
+        validRegion = 1
+    while i < len(items):
+       temp=(items[i-1],items[i])
+       if items[i-1] == sys.argv[2]:
+           predator = items[i]
+           validPrey = 1
+       tupList.append(temp)
+       i=i+1
+    
+    row.append(tupList)
+    masterList.append(row)
+    tupList=[]
+    i=2
+    s=sys.stdin.readline()
+    
+print masterList
+if validRegion == 0:
+    print "\nUnknow region: %s\n" % (sys.argv[1])
+if validPrey == 0:
+    print "\nNo chain entry for %s\n" % (sys.argv[2])
+else:
+    print "\nIn the %s the %s is eaten by the %s.\n" % (sys.argv[1],sys.argv[2],predator)
+    
+sys.exit(0)

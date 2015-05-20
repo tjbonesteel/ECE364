@@ -1,0 +1,15 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+IFS=':'
+set $(egrep -n $1 $2)
+lineNum=$1
+
+
+let min=$lineNum-1
+let max=$lineNum+1
+
+echo $(tail -n +${min} data | head -n 3)

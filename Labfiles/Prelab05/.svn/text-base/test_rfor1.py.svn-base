@@ -1,0 +1,21 @@
+#! /usr/bin/evn python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+import sys
+sum = 1
+count1 = 0
+count2 = 1
+number = sys.argv[1]
+num = int(number)
+num = num + 1
+run = range(num)
+for i in run:
+    if count1 == (5*count2):
+        sum = sum + run[i+1]
+        count2 = count2 + 1
+    count1 = count1 + 1
+print sum
+

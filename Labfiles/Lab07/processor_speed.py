@@ -1,0 +1,51 @@
+#!/usr/bin/env python2.6
+# $Author: ee364d02 $
+# $Date: 2013-10-02 15:10:24 -0400 (Wed, 02 Oct 2013) $
+# $HeadURL: svn+ssh://ece364sv@ecegrid-lnx/home/ecegrid/a/ece364sv/svn/F13/students/ee364d02/Lab07/processor_speed.py $
+# $Revision: 60495 $
+
+import sys
+import os
+
+if len(sys.argv) != 3:
+    print "Usage: ./processor_speed.py <filename> <manufacturer>"
+    exit(1)
+
+fileIN = sys.argv[1]
+manf = sys.argv[2]
+manf = manf.upper()
+######### FILE TESTS #############
+#READABLE
+if not os.access(fileIN,os.R_OK):
+    print "%s is not a readable file" % (fileIN)
+    exit(2)
+###################################
+
+fileObj = open(fileIN, "r")
+
+sum=0
+processors={}
+for line in fileObj:
+    line = line.strip()
+    lineList = line.split(";")
+    if lineList[0].upper() == manf:
+        if not processors.has_key(lineList[1]):
+            processors[lineList[1]]=lineList[2:]
+        else:
+            processors[lineList[1]].extend(lineList[2:])
+
+for key in processors:
+    speedSum = 0
+    under = 0
+    vals = processors[key]
+    for i in vals:
+        i= float(i)
+        if i < 1.750:
+            under = under + 1
+        speedSum = speedSum + i
+
+    count = len(vals)
+    avgSpeed = float(speedSum/count)
+    print "%s %s: average = %.3f GHz, Below Threshold = %d" % (manf,key,avgSpeed,under)
+
+exit(0)

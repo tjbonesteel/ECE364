@@ -1,0 +1,38 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+file="$@.grades"
+numStudents='wc -l $@'
+
+if (( $#!=1 ))
+then
+    echo "Usage: assign_grades.bash <roster file>"
+    exit 1
+fi
+
+
+if  [[ ! -r $@ ]]
+then
+    echo "Error: $@ is not a readable file."
+    exit 2
+fi
+
+if [[  -e $file ]]
+then
+    echo "Error: Output File "$@".grades already exists"
+    exit 2
+fi
+
+if [[ ! -w `pwd` ]]
+then
+    echo "Error: Current directory is not writable."
+    exit 2
+fi
+
+
+cut -d' ' -f5 $@
+
+

@@ -1,0 +1,19 @@
+#! /bin/bash
+#
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+if (( $#!=1 ))
+then
+    echo "Usage: interest.bash <bank_statement.csv>"
+    exit 1
+fi
+
+
+if  [[ ! -r $@ ]]
+then
+    echo "Error: $@ is not a readable file."
+    exit 2
+fi

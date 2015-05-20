@@ -1,0 +1,64 @@
+#!/usr/bin/env python2.6
+# $Author: ee364d02 $
+# $Date: 2013-10-01 22:39:47 -0400 (Tue, 01 Oct 2013) $
+# $HeadURL: svn+ssh://ece364sv@ecegrid-lnx/home/ecegrid/a/ece364sv/svn/F13/students/ee364d02/Prelab07/statify.py $
+# $Revision: 60325 $
+
+import sys
+import os
+
+if len(sys.argv) != 3:
+    print "Usage: ./statify.py <input file> <output file>"
+    exit(1)
+
+fileIN = sys.argv[1]
+fileOUT = sys.argv[2]
+
+fileINObj = open(fileIN, "r")
+######### FILE TESTS #############
+#EXISTS
+if not os.path.exists(fileIN):
+    print "%s does not exist!" % (fileIN)
+    exit(1)
+if os.path.exists(fileOUT):
+    print "%s already exists!" % (fileOUT)
+    #exit(1)
+
+#ORDINARY FILE
+if not os.path.isfile(fileIN):
+    print "%s is not an ordinary file!" % (fileIN)
+    exit(1)
+
+#READABLE
+if not os.access(fileIN,os.R_OK):
+    print "%s is not readable" % (fileIN)
+    exit(1)
+###################################
+
+
+fileOutObj = open(fileOUT, "w")
+
+lineCount = 0
+wordCount = 0
+charCount = 0
+avgLen = 0
+float(avgLen)
+
+for line in fileINObj:
+    lineCount = lineCount + 1
+    line = line.strip()
+    fileOutObj.write("  %d: %s\n" % (lineCount, line))
+    lineList = line.split()
+    wordCount = wordCount + len(lineList)
+    for i in lineList:
+        charCount = charCount + len(i)
+
+avgLen = float(charCount)/float(wordCount)
+fileOutObj.write("---- Document statistics ----\n")
+fileOutObj.write("Line count: %d\n" % (lineCount))
+fileOutObj.write("Words count: %d\n" % (wordCount))
+fileOutObj.write("Average word size: %.3f\n" % (avgLen))
+
+fileINObj.close()
+
+exit(0)

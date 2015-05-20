@@ -1,0 +1,19 @@
+#! /usr/bin/evn python2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+import sys
+sum = 0
+number = sys.argv[1]
+num = int(number)
+num = num + 1
+run = range(num)
+i = 0
+while i < num:
+
+    sum = sum + run[i]
+    i=i+1
+print sum
+

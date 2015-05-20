@@ -1,0 +1,57 @@
+<sensor>
+ <sensor state="FL" type="P" id="100-A4XC>"
+   <val>0.749234699076</val>
+   <val>0.45748805232</val>
+ <sensor state="NY" type="T" id="100-BC7X>"
+   <val>0.87777987674</val>
+   <val>0.538244325855</val>
+ <sensor state="NJ" type="P" id="100-7Z37>"
+   <val>0.675123614739</val>
+   <val>0.280365066149</val>
+   <val>-0.911827445792</val>
+ <sensor state="NY" type="P" id="100-YA73>"
+   <val>-0.906885366669</val>
+   <val>0.617206055389</val>
+   <val>-0.411791796662</val>
+   <val>-0.458917504298</val>
+ <sensor state="FL" type="T" id="100-4CB4>"
+   <val>-0.523230236075</val>
+   <val>0.802089816993</val>
+   <val>0.709931708192</val>
+ <sensor state="FL" type="P" id="149-XCZ3>"
+   <val>-0.354919535828</val>
+   <val>-0.457109917737</val>
+   <val>0.631460070236</val>
+ <sensor state="NY" type="T" id="239-YXZ7>"
+   <val>-0.230381269442</val>
+   <val>-0.369877788649</val>
+ <sensor state="NJ" type="P" id="175-7CCA>"
+   <val>-0.113967122192</val>
+   <val>-0.973462995672</val>
+   <val>0.995192723817</val>
+ <sensor state="NJ" type="T" id="108-34X7>"
+   <val>-0.626445987836</val>
+ <sensor state="NY" type="R" id="190-ZA47>"
+   <val>0.00703133142307</val>
+   <val>-0.143555433387</val>
+   <val>-0.48557152776</val>
+ <sensor state="NY" type="T" id="262-X7Y3>"
+   <val>-0.621598804339</val>
+   <val>0.342022350624</val>
+   <val>0.691481198647</val>
+   <val>0.759995266363</val>
+   <val>0.478085316317</val>
+ <sensor state="RI" type="R" id="294-47AZ>"
+   <val>-0.625648170274</val>
+   <val>-0.116191056579</val>
+   <val>-0.555004080775</val>
+ <sensor state="NY" type="R" id="283-3C74>"
+   <val>-0.575396269838</val>
+   <val>-0.316088233245</val>
+   <val>0.954952228125</val>
+   <val>0.628683887635</val>
+   <val>-0.0680601711834</val>
+ <sensor state="FL" type="T" id="224-CBXY>"
+   <val>-0.612015745537</val>
+   <val>-0.357888630213</val>
+</sensor>

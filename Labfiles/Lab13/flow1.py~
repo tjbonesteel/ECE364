@@ -1,0 +1,87 @@
+#! /usr/bin/env python2.6
+# $Author: ee364d02 $
+# $Date: 2013-11-19 22:43:05 -0500 (Tue, 19 Nov 2013) $
+# $HeadURL: svn+ssh://ece364sv@ecegrid-lnx/home/ecegrid/a/ece364sv/svn/F13/students/ee364d02/Lab13/flow.py $
+# $Revision: 63131 $
+
+
+from Tkinter import *
+import os
+import sys
+import math
+import re
+
+
+fileIN = sys.argv[1]
+
+class Game(Frame):
+
+    def __init__(self, parent):
+        Frame.__init__(self, parent, background="gray")
+
+        self.parent = parent
+        self.initUI()
+        
+    
+        
+    def initUI(self):
+        count=2
+        self.parent.title("FLOW")
+        fileObj = open(fileIN)
+        
+        def callback(m,n,color):
+            row=n
+            col=m
+            
+            btn = Button(self, text=line[x],width=10, height=5, command=lambda x=m, y=n: callback(x,y)) 
+            btn.config(bg="red")
+            btn.grid(column=col, row=row)
+            print n,m
+            
+            
+            
+        for line in fileObj:
+            line = line.strip()
+            line = line.split(",")
+            width = len(line)
+            for x in range(width):
+                
+                btn = Button(self, text=line[x],width=10, height=5, command=lambda x=x,color=line[x], y=count: callback(x,y,color))
+                if line[x] == "1":
+                    btn.config(bg = "red")
+                elif line[x] == "2":
+                    btn.config(bg = "orange")
+                elif line[x] == "3":
+                    btn.config(bg = "green")
+                    
+                btn.grid(column=x, row=count)
+            count += 1
+        quitButton = Button(self, text="Quit",width=10, command=self.quit)
+        quitButton.grid(row=1, column=width-1) 
+        
+        
+        
+        self.pack(fill=BOTH,expand=1)
+        
+  
+        
+
+
+def main():
+    root=Tk()
+    root.geometry("700x700+300+300")
+    app=Game(root)
+
+    if len(sys.argv) != 2:
+        print "Usage: ./flow.py <inputfile>"
+        exit(1)
+        
+    fileIN = sys.argv[1]
+    if not os.access(fileIN,os.R_OK):
+        print "%s is not a readable file" % (fileIN)
+        exit(1)
+     
+    root.mainloop()
+
+if __name__ == '__main__':
+    main()

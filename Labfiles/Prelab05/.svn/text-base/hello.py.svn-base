@@ -1,0 +1,8 @@
+#! /usr/bin/evn puthon2.6
+# $Author$
+# $Date$
+# $HeadURL$
+# $Revision$
+
+print "Hello World!"
+
